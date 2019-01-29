@@ -11,8 +11,12 @@ let dragged;
 
 const honk = event => honkingSound.play();
 const resizeText = event => {
-    event.stopPropagation();
+    event.stopImmediatePropagation();
     event.target.style.transform = "scale(1.1, 1.1)";
+}
+const resizeTextBig = event => {
+    event.stopPropagation();
+    event.target.style.transform = "scale(1.5, 1.5)";
 }
 const normalSize = event => {
     event.stopPropagation();
@@ -25,6 +29,10 @@ buttons.forEach(button => button.addEventListener("click", honk));
 h2s.forEach(h2 => h2.addEventListener("mouseover", resizeText));
 paragraphs.forEach(p => p.addEventListener("mouseover", resizeText));
 h4s.forEach(h4 => h4.addEventListener("mouseover", resizeText));
+
+h2s.forEach(h2 => h2.addEventListener("mouseover", resizeTextBig));
+paragraphs.forEach(p => p.addEventListener("mouseover", resizeTextBig));
+h4s.forEach(h4 => h4.addEventListener("mouseover", resizeTextBig));
 
 h2s.forEach(h2 => h2.addEventListener("mouseleave", normalSize));
 paragraphs.forEach(p => p.addEventListener("mouseleave", normalSize));
